@@ -34,3 +34,9 @@ Built entirely around open-source AI principles, **PhantasmLocal** operates with
 ---
 
 ## 🛠️ Project Architecture
+
+```text
+phantasmlocal/
+├── index.html       # Main DOM structure, tabs, and layout
+├── style.css        # 90s CRT scanlines, retro boxes, and candlelight styling
+└── script.js        # Web Audio synth engine, terminal parser, and local AI logic
