@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PHANTASM_LOCAL // DÍA DE LOS MUERTOS & 199X SÉANCE</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="crt-flicker" onclick="startAmbientHorrorSoundtrack()">
+
+  <!-- FAKE BSOD OVERLAY -->
+  <div id="bsodOverlay">
+    <h2>*** FATAL EXCEPTION 0E AT 0028:C0011666 ***</h2>
+    <br>
+    <p>A fatal ghost process overflow has been detected by TabPFN_35.SYS.</p>
+    <p>System halted to prevent soul corruption.</p>
+    <br>
+    <p>* Press EXORCISE to attempt system recovery.</p>
+    <br><br>
+    <button onclick="recoverFromBSOD()" class="retro-btn" style="border-color:#fff; color:#fff;">[ RECOVER SYSTEM ]</button>
+  </div>
+
+  <!-- Header & BBS Navigation with Candles at Both Ends -->
+  <header class="retro-box" style="position: relative;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+      <span style="font-size: 32px;" class="candle-flicker">🕯️</span>
+      <div style="flex: 1; text-align: center;">
+        <div class="ascii-art">
+██████╗░██╗░░██╗░█████╗░███╗░░██╗████████╗░█████╗░███╗░░░███╗
+██╔══██╗██║░░██║██╔══██╗████╗░██║╚══██╔══╝██╔══██╗████╗░████║
+██████╔╝███████║███████║██╔██╗██║░░░██║░░░███████║██╔████╔██║
+██╔═══╝██╔══██║██╔══██║██║╚████║░░░██║░░░██╔══██║██║╚██╝██║
+██║░░░░░██║░░██║██║░░██║██║░░███║░░░██║░░░██║░░██║██║░░░░██║
+╚═╝░░░░░╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░╚══╝░░░╚═╝░░░╚═╝░░╚═╝╚═╝░░░░╚═╝
+        </div>
+      </div>
+      <span style="font-size: 32px;" class="candle-flicker">🕯️</span>
+    </div>
+
+    <div style="text-align: center; font-size: 11px; color: #ff5555; margin-bottom: 12px; font-weight: bold;">
+      💀 ☠️ [SYSTEM: OFFLINE KERNEL 3.5] -- [SÉANCE & MEMORY VAULT ACTIVE] ☠️ 💀
+    </div>
+
+    <div style="text-align: center; word-spacing: 12px;">
+      <button onclick="switchTab('ofrenda')" class="ofrenda-btn">&gt; 🕯️ DIGITAL OFRENDA</button>
+      <button onclick="switchTab('terminal')" class="retro-btn">&gt; 💻 HAUNTED_TTY</button>
+      <button onclick="switchTab('seance')" class="retro-btn">&gt; 🔮 SÉANCE ROOM</button>
+      <button onclick="switchTab('radio')" class="retro-btn">&gt; 📻 GHOST RADIO</button>
+    </div>
+  </header>
+
+  <!-- TAB 1: DÍA DE LOS MUERTOS DIGITAL OFRENDA (DEFAULT) -->
+  <section id="tab-ofrenda" class="ofrenda-box">
+    <div style="display: flex; justify-content: space-between; align-items: center; border-b: 1px solid #ff7700; padding-bottom: 10px; margin-bottom: 15px;">
+      <h2 style="margin:0; font-size: 20px; color: #ffaa33;" class="candle-flicker">💀🕯️ DIGITAL MEMORY OFRENDA (ALTAR) 🕯️💀</h2>
+      <span style="font-size: 11px; color: #ff8800; background: #2b1100; padding: 4px 8px; border: 1px solid #ff7700;">Día de los Muertos • Nov 1-2</span>
+    </div>
+
+    <p style="font-size: 12px; color: #ffcc99; line-height: 1.5;">
+      Welcome to the memory altar. Honor your passed loved ones by lighting digital candles, gathering their favorite foods and songs, pinning a Polaroid memory, and generating a respectful local AI <em>Calavera Literaria</em> poem with zero data sent to external servers.
+    </p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;">
+      <div>
+        <label style="font-size: 11px; display: block; margin-bottom: 5px; color: #ffaa33;">HONOREE NAME & DATES:</label>
+        <input id="inputName" type="text" value="Abuela Elena (1932–2021)" style="margin-bottom: 12px;">
+
+        <label style="font-size: 11px; display: block; margin-bottom: 5px; color: #ffaa33;">FAVORITE MEMORIES, FOODS & TALES:</label>
+        <textarea id="inputStory" rows="3" style="margin-bottom: 12px;">Loved baking pan de muerto, strumming the acoustic guitar, and telling stories of the old village under the star-lit sky.</textarea>
+
+        <label style="font-size: 11px; display: block; margin-bottom: 5px; color: #ffaa33;">📸 PIN A MEMORY PHOTO (LOCAL POLAROID):</label>
+        <input type="file" id="photoPropInput" accept="image/*" onchange="loadPolaroid(event)" style="margin-bottom: 12px; font-size: 11px; color: #ffaa33; border: 1px solid #ff7700; background: #1a0800;">
+
+        <button onclick="generateCalavera()" class="ofrenda-btn" style="width: 100%; margin-top: 5px;">✍️ GENERATE CALAVERA LITERARIA (LOCAL GEMMA)</button>
+      </div>
+
+      <div>
+        <!-- CANDLE-LIT POLAROID ALTAR DISPLAY -->
+        <div id="polaroidFrame" style="background: #100601; padding: 12px 12px 25px 12px; border: 2px solid #ff7700; text-align: center; color: #ffcc88; box-shadow: 0 0 12px rgba(255, 119, 0, 0.2); margin-bottom: 12px;">
+          <div id="photoPlaceholder" style="background: #050200; height: 130px; display: flex; align-items: center; justify-content: center; color: #885522; font-size: 11px; border: 1px dashed #ff7700;">
+            🕯️ [ NO PHOTO PINNED TO ALTAR ] 🌼
+          </div>
+          <div style="font-weight: bold; font-size: 13px; margin-top: 10px; color: #ffaa33;" id="polaroidCaption" class="candle-flicker">IN LOVING MEMORY</div>
+        </div>
+
+        <div id="poemOutput" style="background: #050200; border: 1px solid #ff7700; padding: 10px; height: 95px; overflow-y: auto; font-size: 11px; color: #ffaa33; margin-bottom: 10px; line-height: 1.4;">
+          Click "Generate Calavera Literaria" above to summon a poetic rhyming verse...
+        </div>
+        <button onclick="exportCapsule()" class="ofrenda-btn" style="width: 100%; font-size: 11px;">📦 EXPORT OFFLINE MEMORY BUNDLE (.HTML)</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- TAB 2: HAUNTED TERMINAL -->
+  <section id="tab-terminal" class="retro-box-red hidden">
+    <h3>&gt;&gt; TERMINAL_SESSION // KERNEL 9X DREAD 💀</h3>
+    <p style="font-size: 11px; color: #ff9999;">Type commands below. Audio synthesis plays physical keystrokes.</p>
+    <div id="terminalWindow" style="background: #000; border: 1px solid #ff3333; padding: 10px; height: 320px; overflow-y: auto; font-size: 13px; line-height: 1.4; margin-bottom: 10px;">
+      <p>PHANTASM_LOCAL [Version 3.50.1998]</p>
+      <p>(c) 1998 Ghost in the Machine Collective. All rights reserved.</p>
+      <p>C:\> Initializing local hardware diagnostics...</p>
+      <p>Type <span style="color: #ffff00;">help</span> for commands, or <span style="color: #ffff00;">scan</span> for ghost processes.</p>
+      <br>
+    </div>
+    <div style="display: flex; gap: 10px;">
+      <span style="padding-top: 5px; color: #ff3333; font-weight: bold;">C:\&gt;</span>
+      <input id="termInput" type="text" onkeydown="handleTerminalInput(event)" placeholder="Type a command (dir, scan, exorcise, clear)..." style="border-color:#ff3333; color:#ff6666;">
+    </div>
+  </section>
+
+  <!-- TAB 3: EXTINCT LANGUAGE SÉANCE -->
+  <section id="tab-seance" class="retro-box hidden">
+    <h3>&gt;&gt; 90S_BBS_SEANCE // EXTINCT CODE COMMUNION ☠️</h3>
+    <p style="font-size: 11px; color: #66ff99;">Commune with forgotten programming languages across the digital dial-up line.</p>
+    
+    <div style="margin: 15px 0; display: flex; gap: 10px;">
+      <button onclick="setSpirit('COBOL')" class="retro-btn">[1] COBOL 85</button>
+      <button onclick="setSpirit('TurboPascal')" class="retro-btn">[2] Turbo Pascal 7.0</button>
+      <button onclick="setSpirit('ActionScript2')" class="retro-btn">[3] Macromedia Flash</button>
+    </div>
+
+    <div id="seanceLog" style="background: #000; border: 1px solid #00ff66; padding: 10px; height: 220px; overflow-y: auto; font-size: 12px; margin-bottom: 10px;">
+      <p>[SYSTEM]: Spirit channel open for COBOL 85. Ask your question below.</p>
+    </div>
+
+    <div style="display: flex; gap: 10px;">
+      <input id="seanceInput" type="text" placeholder="Ask how memory was allocated in the 90s..." onkeydown="handleSeance(event)">
+      <button onclick="sendSeance()" class="retro-btn">TRANSMIT</button>
+    </div>
+  </section>
+
+  <!-- TAB 4: SHORTWAVE GHOST RADIO -->
+  <section id="tab-radio" class="retro-box-red hidden">
+    <h3>&gt;&gt; SHORTWAVE_GHOST_RADIO // 88.0 - 108.0 MHZ 📻</h3>
+    <p style="font-size: 11px;">Adjust the tuner slider to intercept ghost numbers station transmissions.</p>
+
+    <div style="background: #000; border: 2px solid #ff3333; padding: 20px; text-align: center; margin-bottom: 15px;">
+      <div style="font-size: 32px; font-weight: bold; color: #ff3333; letter-spacing: 4px;" id="radioFreqDisplay">94.3 MHz</div>
+      <div style="font-size: 11px; color: #888; margin-top: 5px;" id="radioStatus">STATUS: HEAVY STATIC / NO SIGNAL</div>
+      <br>
+      <input type="range" min="88.0" max="108.0" step="0.1" value="94.3" oninput="tuneRadio(this.value)" style="width: 80%; border-color:#ff3333;">
+    </div>
+
+    <div id="radioMessageLog" style="background: #0a0000; border: 1px dashed #ff3333; padding: 10px; font-size: 12px; height: 100px; color: #ff6666; overflow-y: auto;">
+      [GHOST RADIO]: Tune to 91.1 or 104.7 to catch hidden broadcasts...
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

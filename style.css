@@ -1,0 +1,137 @@
+/* 90s CRT & Horror Aesthetics */
+body {
+  background-color: #030303;
+  color: #00ff66;
+  font-family: "Courier New", Courier, monospace;
+  margin: 0;
+  padding: 12px;
+  overflow-x: hidden;
+}
+
+/* CRT Scanlines */
+body::before {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.45) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+  z-index: 999;
+  background-size: 100% 4px, 6px 100%;
+  pointer-events: none;
+}
+
+@keyframes screenFlicker {
+  0% { opacity: 0.96; }
+  50% { opacity: 1; }
+  52% { opacity: 0.80; }
+  54% { opacity: 0.98; }
+  100% { opacity: 0.95; }
+}
+.crt-flicker { animation: screenFlicker 0.12s infinite; }
+
+/* Screen Glitch Flash */
+.glitch-flash {
+  filter: invert(1) hue-rotate(180deg) contrast(200%);
+}
+
+/* Retro Boxes */
+.retro-box {
+  background-color: #080a0f;
+  border: 2px solid #00ff66;
+  box-shadow: 4px 4px 0px #003311;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+.retro-box-red {
+  background-color: #0f0505;
+  border: 2px solid #ff3333;
+  box-shadow: 4px 4px 0px #330000;
+  color: #ff6666;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+/* Día de los Muertos Ofrenda Box Styling (Warm Candlelight & Marigold) */
+.ofrenda-box {
+  background: linear-gradient(180deg, #180a02 0%, #0a0401 100%);
+  border: 2px solid #ff7700;
+  box-shadow: 0 0 15px rgba(255, 119, 0, 0.25), 4px 4px 0px #441a00;
+  color: #ffcc88;
+  padding: 20px;
+  margin-bottom: 16px;
+  border-radius: 4px;
+}
+
+.retro-btn {
+  background-color: #000;
+  color: #00ff66;
+  border: 2px solid #00ff66;
+  padding: 6px 12px;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+.retro-btn:hover {
+  background-color: #00ff66;
+  color: #000;
+}
+
+.ofrenda-btn {
+  background-color: #2b1100;
+  color: #ffaa33;
+  border: 2px solid #ff7700;
+  padding: 8px 16px;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+.ofrenda-btn:hover {
+  background-color: #ff7700;
+  color: #000;
+}
+
+input, textarea, select {
+  background-color: #050200;
+  color: #ffcc88;
+  border: 1px solid #ff7700;
+  font-family: "Courier New", Courier, monospace;
+  padding: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.ascii-art {
+  font-size: 9px;
+  line-height: 9px;
+  color: #ff3333;
+  font-weight: bold;
+  white-space: pre;
+  text-align: center;
+  margin-bottom: 10px;
+  text-shadow: 0 0 6px rgba(255, 0, 0, 0.7);
+}
+
+/* Candle Flicker Effect */
+@keyframes candleGlow {
+  0%, 100% { opacity: 0.85; text-shadow: 0 0 8px #ff7700; }
+  50% { opacity: 1; text-shadow: 0 0 16px #ffaa00; }
+}
+.candle-flicker { animation: candleGlow 2.5s infinite ease-in-out; }
+
+/* BSOD Overlay */
+#bsodOverlay {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background-color: #0000aa;
+  color: #ffffff;
+  font-family: "Courier New", Courier, monospace;
+  padding: 40px;
+  box-sizing: border-box;
+  z-index: 10000;
+  display: none;
+}
+
+.hidden { display: none; }
+hr { border: 0; border-top: 1px dashed #ff7700; margin: 15px 0; }
