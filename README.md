@@ -2,7 +2,7 @@
 
 > *“What is a ghost, if not an unextinguished process running on hardware we forgot we owned?”*
 
-[![GitHub Pages Live Demo](https://img.shields.io/badge/DEMO-Live%20on%20GitHub%20Pages-orange?style=for-the-badge&logo=github)](https://YOUR_GITHUB_USERNAME.github.io/phantasmlocal/)
+[![GitHub Pages Live Demo](https://img.shields.io/badge/DEMO-Live%20on%20GitHub%20Pages-orange?style=for-the-badge&logo=github)](https://riyadhami13.github.io/phantasmlocal/)
 [![Hacktoberfest 2026](https://img.shields.io/badge/Hacktoberfest-2026-purple?style=for-the-badge)](https://hacktoberfest.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE)
 
